@@ -1,21 +1,21 @@
-interface Admin {
-  role: string;
-}
-interface User {
-  email: string;
-}
+type Bird = {
+  name: string;
+  canFly: boolean;
+};
 
-// Method 1: use `in` keyword
-function redirect(user: Admin | User) {
-  if ("role" in user) {
-    // use the `in` operator for typeguards since TS 2.7+
-    console.log(user.role);
+type Fish = {
+  name: string;
+  canSwim: boolean;
+};
+
+const isBird = (animal: Bird | Fish): animal is Bird => {
+  return (animal as Bird).canFly !== undefined;
+};
+
+const usage = (animal: Bird | Fish) => {
+  if (isBird(animal)) {
+    console.log(`${animal.name} is flying: ${animal.canFly}`);
   } else {
-    console.log(user.email);
+    console.log(`${animal.name} is swimming: ${animal.canSwim}`);
   }
-}
-
-// Method 2: custom type guard, does the same thing in older TS versions or where `in` isnt enough
-function isAdmin(user: Admin | User): user is Admin {
-  return (user as any).role !== undefined;
-}
+};

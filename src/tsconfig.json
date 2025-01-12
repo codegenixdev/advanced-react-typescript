@@ -1,29 +1,41 @@
 {
   "compilerOptions": {
-    "incremental": true,
-    "outDir": "build/lib",
-    "target": "es5",
-    "module": "esnext",
-    "lib": ["DOM", "ESNext"],
-    "sourceMap": true,
-    "importHelpers": true,
-    "declaration": true,
-    "rootDir": "src",
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "allowJs": false,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "baseUrl": "src",
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true
+    /* Build Output Configuration */
+    "noEmit": true, // Don't output files (useful with bundlers)
+    "sourceMap": true, // Generate source maps for debugging
+
+    /* JavaScript Support & Target Settings */
+    "target": "ES2020", // JavaScript version to compile to
+    "lib": ["DOM", "ESNext"], // Built-in type definitions to include
+    "jsx": "react-jsx", // How to handle JSX (for React)
+
+    /* Module Settings */
+    "module": "ESNext", // Module system to use (modern ES modules)
+    "moduleResolution": "bundler", // How to resolve modules
+    "isolatedModules": true, // Ensure files can be safely transpiled
+    "allowImportingTsExtensions": true, // Allow imports with .ts extensions
+
+    /* Path Aliases */
+    "paths": {
+      "@/*": ["./src/*"] // Enable @ imports from src directory
+    },
+
+    /* Type Checking */
+    "strict": true, // Enable all strict type checking
+    "skipLibCheck": true, // Skip type checking of libraries
+    "noImplicitReturns": true, // Ensure all code paths return a value
+
+    /* Code Quality Checks */
+    "noUnusedLocals": true, // Error on unused local variables
+    "noUnusedParameters": true, // Error on unused parameters
+    "noFallthroughCasesInSwitch": true, // Ensure switch cases are handled
+
+    /* Interoperability */
+    "esModuleInterop": true, // Better interop between different module types
+    "forceConsistentCasingInFileNames": true // Ensure consistent file casing
   },
-  "include": ["src/**/*"],
+
+  /* Project Settings */
+  "include": ["src"],
   "exclude": ["node_modules", "build", "scripts"]
 }

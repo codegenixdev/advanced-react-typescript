@@ -1,13 +1,35 @@
-interface MyComponentProps {
-  /** Description of prop "label".
-   * @default foobar
-   * */
-  label?: string;
-}
+type ButtonProps = {
+  /** The text to display inside the button
+   * @default "Click me"
+   */
+  text?: string;
+
+  /** Function to call when button is clicked */
+  onClick?: () => void;
+
+  /** Whether the button is disabled
+   * @default false
+   */
+  disabled?: boolean;
+};
 
 /**
- * General component description in JSDoc format. Markdown is *supported*.
+ * A simple reusable button component.
+ *
+ * @example
+ * // Basic usage
+ * <Button text="Save" onClick={() => alert('Saved!')} />
  */
-export default function MyComponent({ label = "foobar" }: MyComponentProps) {
-  return <div>Hello world {label}</div>;
-}
+const Button = ({
+  text = "Click me",
+  onClick,
+  disabled = false,
+}: ButtonProps) => {
+  return (
+    <button onClick={onClick} disabled={disabled} className="button">
+      {text}
+    </button>
+  );
+};
+
+export { Button };
